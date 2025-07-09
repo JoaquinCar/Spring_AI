@@ -1,20 +1,28 @@
 package com.example.demo;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+@Entity
+@Table(name = "software_engineers")
 public class SoftwareEngineer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer Id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "email")
     private String email;
-    private List<String> skills;
 
-    public SoftwareEngineer(Integer id, String name, String email, List<String> skills) {
-        Id = id;
-        this.name = name;
-        this.email = email;
-        this.skills = skills;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "engineer_skills",
+            joinColumns = @JoinColumn(name = "engineer_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
+    private List<Skill> skills = new ArrayList<>();
 
     public Integer getId() {
         return Id;
@@ -40,13 +48,14 @@ public class SoftwareEngineer {
         this.email = email;
     }
 
-    public List<String> getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(List<String> skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
+
 
     @Override
     public boolean equals(Object o) {

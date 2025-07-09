@@ -13,13 +13,8 @@ public class SoftwareEngineerController {
     // You can define methods here to handle GET, POST, PUT, DELETE requests
     // For example, you might have methods like getAllEngineers(), getEngineerById(), createEngineer(), etc.
     @GetMapping("/all")
-    public List<SoftwareEngineer> getAllEngineers() {
-        return List.of(
-                new SoftwareEngineer(1, "Alice", "alice@gmail.com", List.of("Java", "Spring", "Docker")),
-                new SoftwareEngineer(2, "Bob", "bob@gmail.com", List.of("Python", "Django", "AWS")),
-                new SoftwareEngineer(3, "Carol", "carol@gmail.com", List.of("JavaScript", "React", "Node.js")),
-                new SoftwareEngineer(4, "Dave", "dave@gmail.com", List.of("C#", ".NET", "Azure"))
-        );
+    public String getAllEngineers() {
+        return "This method will return a list of all software engineers";
     }
 
 
