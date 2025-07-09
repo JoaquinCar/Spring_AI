@@ -1,6 +1,19 @@
 version: "3.8"
 
 services:
+  app:
+    container_name: spring-boot-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - db
+    restart: unless-stopped
+
   db:
     container_name: postgres-spring-boot
     image: postgres:15
