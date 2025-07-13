@@ -1,4 +1,5 @@
-package com.example.demo;
+package com.example.demo.Entity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class SoftwareEngineer {
             joinColumns = @JoinColumn(name = "engineer_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
+    @JsonManagedReference
     private List<Skill> skills = new ArrayList<>();
 
     public Integer getId() {

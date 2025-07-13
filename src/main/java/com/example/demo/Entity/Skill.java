@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class Skill {
     private String name;
 
     @ManyToMany(mappedBy = "skills")
+    @JsonBackReference
     private List<SoftwareEngineer> engineers;
 
     // Constructores, getters, setters...
