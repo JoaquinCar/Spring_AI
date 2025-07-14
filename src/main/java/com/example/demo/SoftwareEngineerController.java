@@ -3,9 +3,11 @@ package com.example.demo;
 import com.example.demo.Entity.SoftwareEngineer;
 import com.example.demo.mapper.EngineerSkillProjection;
 import com.example.demo.mapper.SoftwareEngineerDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -48,10 +50,28 @@ public class SoftwareEngineerController {
     public Optional<List<SoftwareEngineerDTO>> findBySkillName(@PathVariable String skillName) {
         return service.findDTOsBySkillName(skillName);
     }
+    @GetMapping("/engineer/{name}")
+    public Optional<List<SoftwareEngineer>> findByNameContainingIgnoreCase(String name){
+        return service.findByNameContainingIgnoreCase(name);
+    }
 
     @GetMapping("/engineers-with-skills")
     public List<EngineerSkillProjection> getEngineersWithSkills() {
         return service.findEngineersWithSkills();
     }
+
+    @GetMapping("/search-with-analysis/{name}")
+    public ResponseEntity<List<Map<String, Object>>> findByNameWithAnalysis(@PathVariable String name) {
+        List<Map<String, Object>> results = service.findByNameWithAIAnalysis(name);
+        return ResponseEntity.ok(results);
+    }
+
+    @GetMapping("/search-with-analysis-param")
+    public ResponseEntity<List<Map<String, Object>>> findByNameWithAnalysisParam(@RequestParam String name) {
+        List<Map<String, Object>> results = service.findByNameWithAIAnalysis(name);
+        return ResponseEntity.ok(results);
+    }
+
+
 
 }

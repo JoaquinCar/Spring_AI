@@ -35,6 +35,9 @@ ENV SPRING_DATASOURCE_USERNAME=joaquincar
 ENV SPRING_DATASOURCE_PASSWORD=kino1006
 ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
+# OpenAI API Key - Will be overridden by the value from .env file
+ENV OPENAI_API_KEY=${OPENAI_API_KEY}
+
 # Puerto en el que se ejecutará la aplicación
 EXPOSE 8080
 

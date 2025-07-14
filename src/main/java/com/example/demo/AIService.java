@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 

@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    env_file:
+      - .env
     depends_on:
       - db
     networks:
@@ -17,10 +19,9 @@ services:
   db:
     container_name: postgres-spring-boot
     image: postgres:15
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: joaquincar
-      POSTGRES_PASSWORD: kino1006
-      POSTGRES_DB: spring_db
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
