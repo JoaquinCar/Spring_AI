@@ -10,6 +10,10 @@ _Java Service used to interact with the language model_
 
 ![AI Service](images/AI_service.png)
 
+## 🧠 Purpose
+
+The system allows registering software engineers and their tech stacks, then analyzes their skills using an AI model, generating a concise, human-readable summary of their capabilities.
+
 ## 🛠️ Technologies & Tools Used
 
 - **Java 17**
@@ -19,7 +23,7 @@ _Java Service used to interact with the language model_
 - **Docker**
 - **AWS EC2** (Amazon Linux 2023)
 - **Git & GitHub**
-
+  ![Instance](images/instance.png)
 ---
 
 ## 📦 Project Structure
@@ -39,4 +43,14 @@ The backend provides endpoints to register software engineers and their tech sta
 The system uses a Java-based AI client to send prompts to a language model, requesting analysis based on the engineer's skills.
 
 
+## 🌐 Deployment Notes
+
+The system is deployed on an EC2 instance using Amazon Linux 2023. Security groups are configured to expose ports for:
+
+- HTTP (port 80)
+- SSH (restricted by IP)
+
+The AI service runs as a standalone Spring Boot application listening for requests from the backend.
+![EC2](images/ec2-testing.png)
+---
 
