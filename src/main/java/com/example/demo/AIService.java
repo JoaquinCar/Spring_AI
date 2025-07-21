@@ -8,11 +8,27 @@ public class AIService {
     private final ChatClient chatClient;
 
     public AIService(ChatClient.Builder chatClientBuilder) {
-        chatClient = chatClientBuilder.build();
+        this.chatClient = chatClientBuilder.build();
     }
+
     public String chat(String prompt) {
+        /*
         return chatClient.prompt(prompt)
-                .call()
-                .content();
+                         .call()
+                         .content();
+        */
+
+        // Simulación de análisis de IA
+        return """
+            [SIMULATED AI RESPONSE]
+            Analysis for prompt:
+            "%s"
+
+            Strengths: solid experience, adaptability, continuous learning.
+            Weaknesses: explore emerging technologies, increase collaboration.
+
+            Suggestion: dive into system design, mentoring, and community engagement.
+            """.formatted(prompt);
     }
 }
+
