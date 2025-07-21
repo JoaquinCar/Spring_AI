@@ -1,66 +1,42 @@
-# Spring AI Application
+# AI-Powered Software Engineer Skill Analyzer (Spring Boot + AWS)
 
-This application uses Spring AI to analyze software engineers' skills and provide recommendations for improvement.
+This project demonstrates the integration of a Java Spring Boot API with an AI analysis service deployed on an AWS EC2 instance. It was developed as a proof of knowledge in cloud infrastructure, backend development, and basic prompt engineering.
 
-## Setup
+---
 
-### API Key Configuration
+## 🧠 AI Service Code Snapshot
 
-1. The application requires an OpenAI API key to function properly.
-2. Open the `.env` file in the root directory of the project.
-3. Replace `your_openai_api_key_here` with your actual OpenAI API key:
+_Java Service used to interact with the language model_
 
-```
-OPENAI_API_KEY=your_actual_api_key_here
-```
+![AI Service](images/AI_service.png)
 
-4. Save the file.
+## 🛠️ Technologies & Tools Used
 
-### Running the Application
+- **Java 17**
+- **Spring Boot 3**
+- **PostgreSQL 15**
+- **OpenAI Java SDK (Unofficial)**
+- **Docker**
+- **AWS EC2** (Amazon Linux 2023)
+- **Git & GitHub**
 
-#### Using Docker
+---
 
-1. Make sure you have Docker and Docker Compose installed.
-2. Run the following command in the root directory of the project:
+## 📦 Project Structure
 
-```bash
-docker-compose up
-```
+The backend provides endpoints to register software engineers and their tech stacks. It includes a special endpoint that sends a prompt to an AI service, which generates a concise analysis of the engineer’s skills.
 
-This will start the application and the PostgreSQL database.
+### Key Features:
+- RESTful API for managing engineers and skills.
+- Dockerized PostgreSQL database and Spring Boot application.
+- AI-based skill analysis using a language model.
+- Fully deployed and tested in an EC2 instance with public access.
 
-#### Using Maven
+---
 
-1. Make sure you have Maven and Java 21 installed.
-2. Run the following command in the root directory of the project:
+## 🧠 AI Integration
 
-```bash
-./mvnw spring-boot:run
-```
+The system uses a Java-based AI client to send prompts to a language model, requesting analysis based on the engineer's skills.
 
-## API Endpoints
 
-### Search Engineers with AI Analysis
 
-```
-GET /software-engineers/search-with-analysis-param?name=<engineer_name>
-```
-
-This endpoint searches for engineers by name and provides an AI analysis of their skills.
-
-Example:
-```
-http://localhost:8080/software-engineers/search-with-analysis-param?name=carlos
-```
-
-### Other Endpoints
-
-- `GET /software-engineers/all` - Get all engineers
-- `GET /software-engineers/engineer/{id}` - Get engineer by ID
-- `GET /software-engineers/search/{name}` - Search engineers by name
-- `GET /software-engineers/skill/{skillName}` - Search engineers by skill
-- `GET /software-engineers/analyze/{name}` - Alternative endpoint for AI analysis
-
-## Security Note
-
-The `.env` file contains sensitive information and is excluded from version control. Never commit your actual API keys to the repository.
